@@ -4,7 +4,7 @@ This Rock-Paper-Scissors game built with JavaScript runs entirely in the console
 
 After starting the game, you will be prompted to enter your choice of either `Rock`, `Paper`, or `Scissors`.
 The game will then generate a random move for the computer,compare the two choices, and display the result of each round. 
-After the set number of rounds, the final scores are displayed and the overall winner is declared.
+After the set number of rounds, the final scores are displayed and the overall result is declared.
 
 #How the code works
 
@@ -24,9 +24,9 @@ be strictly compared with the computer choices.
 `playRound(humanChoice, computerChoice)`
 
 Contains the game logic where: 
-  -Rock beats Scissors
+  - Rock beats Scissors
   - Paper beats Rock
-  -Scissors beats Paper
+  - Scissors beats Paper
 
 `playGame(rounds = 2)`
 
