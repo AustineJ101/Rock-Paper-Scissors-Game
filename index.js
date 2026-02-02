@@ -94,3 +94,19 @@ function playRound(humanChoice, computerChoice){
     }
     
 }
+
+function playGame(play){
+
+    for(let i = 1; i <= maxRounds; i++){
+        play(getHumanChoice(), getComputerChoice())
+    }
+
+    if(humanScore > computerScore){
+        console.log(`Game Over! You Win ${humanScore} - ${computerScore}.`);
+    }else if(computerScore > humanScore){
+        console.log(`Game Over! Computer Wins ${computerScore} - ${humanScore}`);
+    }else{
+        console.log(`Game Over! It's a ${humanScore} - ${computerScore} Draw`);
+    }
+
+}
