@@ -53,4 +53,6 @@ function getHumanChoice(){
     return prompt("How would you like to play? Rock, Paper or Scissors?", "");
 }
 
-console.log(getHumanChoice())
+let humanScore = 0;
+
+let computerScore = 0;
