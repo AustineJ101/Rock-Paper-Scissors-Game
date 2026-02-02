@@ -57,7 +57,7 @@ let humanScore = 0;
 
 let computerScore = 0;
 
-let rounds = 0;
+let maxRounds = 5;
 
 function playRound(humanChoice, computerChoice){
     humanChoice = humanChoice.toLowerCase();
