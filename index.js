@@ -49,4 +49,8 @@ function getComputerChoice(){
 
 }
 
-console.log(getComputerChoice())
+function getHumanChoice(){
+    return prompt("How would you like to play? Rock, Paper or Scissors?", "");
+}
+
+console.log(getHumanChoice())
