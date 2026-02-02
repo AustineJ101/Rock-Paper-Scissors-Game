@@ -97,19 +97,23 @@ function playGame(){
     
     }
 
+    function declareGameResult(){
+        if(humanScore > computerScore){
+        console.log(`Game Over! You Win ${humanScore} - ${computerScore}.`);
+        }else if(computerScore > humanScore){
+            console.log(`Game Over! Computer Wins ${computerScore} - ${humanScore}`);
+        }else{
+            console.log(`Game Over! It's a ${humanScore} - ${computerScore} Draw`);
+        }
+    }
+
 
     for(let i = 1; i <= maxRounds; i++){
         playRound(getHumanChoice(), getComputerChoice())
     }
 
-    if(humanScore > computerScore){
-        console.log(`Game Over! You Win ${humanScore} - ${computerScore}.`);
-    }else if(computerScore > humanScore){
-        console.log(`Game Over! Computer Wins ${computerScore} - ${humanScore}`);
-    }else{
-        console.log(`Game Over! It's a ${humanScore} - ${computerScore} Draw`);
-    }
-
+    declareGameResult()
+    
 }
 
 playGame();
