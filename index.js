@@ -1,1 +1,37 @@
-console.log("Hello World!")
+/*
+GAME RULES
+    * Rock beats Scissors
+    * Scissors beats Paper
+    * Paper beats Rock
+    * Similar choices result in a draw
+
+PSEUDOCODE
+    1. Prompt the player to pick a move between Rock, Paper and Scissors and store the result in a variable called playerMove.
+
+    2. Generate a move by the computer and store the result in a variable called computerMove.
+
+    3. Check the playerMove against the computerMove and display the game result in the console as per the game rules.
+            IF playerMove equals Rock
+                IF computerMove equals Scissors
+                    display "You Win" in the console.
+                ELSE IF computerMove  equals Paper
+                    display "Computer Wins" in the console
+                ELSE 
+                    display "It's a Tie" in the console
+            IF playerMove equals Paper
+                IF computerMove equals Rock
+                    display "You Win" in the console.
+                ELSE IF computerMove equals Scissors
+                    display "Computer Wins" in the console
+                ELSE 
+                    display "It's a Tie" in the console
+            IF playerMove equals Scissors
+                IF computerMove equals Paper
+                    display "You Win" in the console.
+                ELSE IF computerMove equals Rock
+                    display "Computer Wins" in the console.
+                ELSE 
+                    display "It's a Tie" in the console
+            
+
+*/
