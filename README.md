@@ -15,4 +15,4 @@ This project is part of the *Javascript Basics* section of [The Odin Project](ht
 3. The first player to reach 5 points is declared winner and the game comes to an end.
 4. After winner declaration, a restart game button is shown to allow for another go at it.
 
-[Live Preview] (https://austinej101.github.io/Rock-Paper-Scissors-Game/)
+[Live Preview](https://austinej101.github.io/Rock-Paper-Scissors-Game/)
