@@ -1,6 +1,15 @@
 const choices = document.querySelector("#choices");
+let humanScore = 0;
+let computerScore = 0;
+let maxRounds = 5;
 
-choices.addEventListener("click", getHumanChoice);
+choices.addEventListener("click", (e) => {
+    let humanChoice = getHumanChoice(e);
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+    console.log(humanScore, computerScore);
+
+});
 
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -27,28 +36,7 @@ function getHumanChoice(event){
     }
 }
 
-
-function playGame(){
-    let humanScore = 0;
-
-    let computerScore = 0;
-
-    let maxRounds = 5;
-
-    
-    function resolveRound(human, computer){
-   
-        if(human === computer){
-            return "draw";
-        }else if((human === "rock" && computer === "scissors") || (human === "paper" && computer === "rock") || (human === "scissors" && computer === "paper")){
-            return "human";
-        }else if((human === "rock" && computer === "paper") || (human === "paper" && computer === "scissors") || (human === "scissors" && computer === "rock")){
-            return "computer";
-        } 
-    }
-
-    function playRound(humanChoice, computerChoice){
-        humanChoice = humanChoice.toLowerCase();
+function playRound(humanChoice, computerChoice){
 
         let roundResult = resolveRound(humanChoice,computerChoice);
         
@@ -65,7 +53,33 @@ function playGame(){
                 console.log(`You Lose! ${computerChoice} beats ${humanChoice}`)
         }
 
-    }
+}
+
+function resolveRound(human, computer){
+   
+        if(human === computer){
+            return "draw";
+        }else if((human === "rock" && computer === "scissors") ||
+         (human === "paper" && computer === "rock") || 
+         (human === "scissors" && computer === "paper")){
+            return "human";
+        }else if((human === "rock" && computer === "paper") ||
+         (human === "paper" && computer === "scissors") ||
+          (human === "scissors" && computer === "rock")){
+            return "computer";
+        } 
+}
+
+function playGame(){
+    let humanScore = 0;
+
+    let computerScore = 0;
+
+    let maxRounds = 5;
+
+
+
+    
 
     function declareGameResult(){
         if(humanScore > computerScore){
