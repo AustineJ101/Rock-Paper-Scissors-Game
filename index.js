@@ -2,13 +2,22 @@ const choices = document.querySelector("#choices");
 let humanScore = 0;
 let computerScore = 0;
 let roundsPlayed = 0;
-let maxRounds = 5;
+const maxRounds = 5;
+
+const rounds = document.querySelector(".rounds-played");
+const human = document.querySelector(".human-score");
+const computer = document.querySelector(".computer-score");
+const roundUpdates = document.querySelector(".round-updates");
+const finalResult = document.querySelector(".final-result");
 
 choices.addEventListener("click", (e) => {
     let humanChoice = getHumanChoice(e);
     let computerChoice = getComputerChoice();
     playRound(humanChoice, computerChoice);
-    roundsPlayed++;
+
+    if(finalResult.textContent){
+        finalResult.textContent = "";
+    }
 
     if(roundsPlayed === maxRounds){
         declareGameResult(humanScore, computerScore);
@@ -43,21 +52,26 @@ function getHumanChoice(event){
 }
 
 function playRound(humanChoice, computerChoice){
+    roundsPlayed++;
 
-        let roundResult = resolveRound(humanChoice,computerChoice);
-        
-        switch(roundResult){
-            case "draw":
-                console.log(`It's a Draw! You both chose ${humanChoice}`);
-                break;
-            case "human":
-                humanScore++;
-                console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
-                break;
-            case "computer":
-                computerScore++;
-                console.log(`You Lose! ${computerChoice} beats ${humanChoice}`)
-        }
+    let message;
+    let roundResult = resolveRound(humanChoice,computerChoice);
+    
+    switch(roundResult){
+        case "draw":
+            message = `It's a Draw! You both chose ${humanChoice}`;
+            updateUserInterface(message);
+            break;
+        case "human":
+            humanScore++;
+            message = `You Win! ${humanChoice} beats ${computerChoice}`;
+            updateUserInterface(message);
+            break;
+        case "computer":
+            computerScore++;
+            message = `You Lose! ${computerChoice} beats ${humanChoice}`;
+            updateUserInterface(message)
+    }
 
 }
 
@@ -78,12 +92,19 @@ function resolveRound(human, computer){
 
 function declareGameResult(humanScore, computerScore){
         if(humanScore > computerScore){
-        console.log(`Game Over! You Win ${humanScore} - ${computerScore}.`);
+            finalResult.textContent = `Game Over! You Win ${humanScore} - ${computerScore}.`;
         }else if(computerScore > humanScore){
-            console.log(`Game Over! Computer Wins ${computerScore} - ${humanScore}`);
+            finalResult.textContent =`Game Over! Computer Wins ${computerScore} - ${humanScore}`;
         }else{
-            console.log(`Game Over! It's a ${humanScore} - ${computerScore} Draw`);
+            finalResult.textContent =`Game Over! It's a ${humanScore} - ${computerScore} Draw`;
         }
+}
+
+function updateUserInterface(message){
+    human.textContent = humanScore;
+    computer.textContent = computerScore;
+    roundUpdates.textContent = message;
+    rounds.textContent = roundsPlayed;
 }
 
 function resetGame(){
