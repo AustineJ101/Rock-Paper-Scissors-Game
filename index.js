@@ -1,4 +1,4 @@
-const choices = document.querySelector("#choices");
+const choices = document.querySelectorAll("button");
 let humanScore = 0;
 let computerScore = 0;
 let roundsPlayed = 0;
@@ -10,21 +10,24 @@ const computer = document.querySelector(".computer-score");
 const roundUpdates = document.querySelector(".round-updates");
 const finalResult = document.querySelector(".final-result");
 
-choices.addEventListener("click", (e) => {
-    let humanChoice = getHumanChoice(e);
-    let computerChoice = getComputerChoice();
-    playRound(humanChoice, computerChoice);
+choices.forEach(choice => {
+    choice.addEventListener("click", (e) => {
+        let humanChoice = getHumanChoice(e);
+        let computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
 
-    if(finalResult.textContent){
-        finalResult.textContent = "";
-    }
+        if(finalResult.textContent){
+            finalResult.textContent = "";
+        }
 
-    if(roundsPlayed === maxRounds){
-        declareGameResult(humanScore, computerScore);
-        resetGame()
-    }     
+        if(roundsPlayed === maxRounds){
+            declareGameResult(humanScore, computerScore);
+            resetGame()
+        }     
 
-});
+    });
+})
+
 
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random() * 3) + 1;
