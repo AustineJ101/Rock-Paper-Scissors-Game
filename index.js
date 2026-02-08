@@ -1,3 +1,4 @@
+const container = document.querySelector(".container");
 const choices = document.querySelectorAll("button");
 let humanScore = 0;
 let computerScore = 0;
@@ -10,19 +11,24 @@ const computer = document.querySelector(".computer-score");
 const roundUpdates = document.querySelector(".round-updates");
 const finalResult = document.querySelector(".final-result");
 
+const restartBtn = document.createElement("button");
+restartBtn.textContent = "Restart Game";
+restartBtn.addEventListener("click", () => {
+    resetGame();
+    restartBtn.remove();
+})
+
+
 choices.forEach(choice => {
     choice.addEventListener("click", (e) => {
         let humanChoice = getHumanChoice(e);
         let computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
 
-        if(finalResult.textContent){
-            finalResult.textContent = "";
-        }
-
         if(roundsPlayed === maxRounds){
             declareGameResult(humanScore, computerScore);
-            resetGame()
+            container.appendChild(restartBtn);
+            disablePlayBtns();
         }     
 
     });
@@ -110,8 +116,23 @@ function updateUserInterface(message){
     rounds.textContent = roundsPlayed;
 }
 
+function disablePlayBtns(){
+    choices.forEach(btn => btn.disabled = true)
+}
+
+function enablePlayBtns(){
+    choices.forEach(btn => btn.disabled = false)
+}
+
 function resetGame(){
     humanScore = 0;
     computerScore = 0;
     roundsPlayed = 0;
+    finalResult.textContent = "";
+    roundUpdates.textContent = "Click the buttons above to start playing again.";
+    human.textContent = 0;
+    computer.textContent = 0;
+    rounds.textContent = 0;
+
+    enablePlayBtns();
 }
