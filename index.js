@@ -1,13 +1,19 @@
 const choices = document.querySelector("#choices");
 let humanScore = 0;
 let computerScore = 0;
+let roundsPlayed = 0;
 let maxRounds = 5;
 
 choices.addEventListener("click", (e) => {
     let humanChoice = getHumanChoice(e);
     let computerChoice = getComputerChoice();
     playRound(humanChoice, computerChoice);
-    console.log(humanScore, computerScore);
+    roundsPlayed++;
+
+    if(roundsPlayed === maxRounds){
+        declareGameResult(humanScore, computerScore);
+        resetGame()
+    }     
 
 });
 
@@ -70,18 +76,7 @@ function resolveRound(human, computer){
         } 
 }
 
-function playGame(){
-    let humanScore = 0;
-
-    let computerScore = 0;
-
-    let maxRounds = 5;
-
-
-
-    
-
-    function declareGameResult(){
+function declareGameResult(humanScore, computerScore){
         if(humanScore > computerScore){
         console.log(`Game Over! You Win ${humanScore} - ${computerScore}.`);
         }else if(computerScore > humanScore){
@@ -89,13 +84,10 @@ function playGame(){
         }else{
             console.log(`Game Over! It's a ${humanScore} - ${computerScore} Draw`);
         }
-    }
+}
 
-
-    for(let i = 1; i <= maxRounds; i++){
-        playRound(getHumanChoice(), getComputerChoice())
-    }
-
-    declareGameResult()
-    
+function resetGame(){
+    humanScore = 0;
+    computerScore = 0;
+    roundsPlayed = 0;
 }
