@@ -3,7 +3,6 @@ const choices = document.querySelectorAll("button");
 let humanScore = 0;
 let computerScore = 0;
 let roundsPlayed = 0;
-const maxRounds = 5;
 
 const rounds = document.querySelector(".rounds-played");
 const human = document.querySelector(".human-score");
@@ -25,7 +24,7 @@ choices.forEach(choice => {
         let computerChoice = getComputerChoice();
         playRound(humanChoice, computerChoice);
 
-        if(roundsPlayed === maxRounds){
+        if(humanScore == 5 || computerScore == 5){
             declareGameResult(humanScore, computerScore);
             container.appendChild(restartBtn);
             disablePlayBtns();
@@ -100,13 +99,10 @@ function resolveRound(human, computer){
 }
 
 function declareGameResult(humanScore, computerScore){
-        if(humanScore > computerScore){
-            finalResult.textContent = `Game Over! You Win ${humanScore} - ${computerScore}.`;
-        }else if(computerScore > humanScore){
-            finalResult.textContent =`Game Over! Computer Wins ${computerScore} - ${humanScore}`;
-        }else{
-            finalResult.textContent =`Game Over! It's a ${humanScore} - ${computerScore} Draw`;
-        }
+        finalResult.textContent = (humanScore > computerScore)? 
+        `Game Over! You Win ${humanScore} - ${computerScore}.` :
+        `Game Over! Computer Wins ${computerScore} - ${humanScore}`;
+
 }
 
 function updateUserInterface(message){
