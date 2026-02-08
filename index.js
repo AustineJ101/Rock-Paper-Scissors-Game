@@ -1,3 +1,7 @@
+const choices = document.querySelector("#choices");
+
+choices.addEventListener("click", getHumanChoice);
+
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random() * 3) + 1;
     switch(randomNumber){
@@ -11,8 +15,16 @@ function getComputerChoice(){
 
 }
 
-function getHumanChoice(){
-    return prompt("How would you like to play? Rock, Paper or Scissors?", "");
+function getHumanChoice(event){
+    const btnId = event.target.id;
+    switch(btnId){
+        case "1": 
+            return "rock";
+        case "2": 
+            return "paper";
+        case "3": 
+            return "scissors";
+    }
 }
 
 
@@ -73,5 +85,3 @@ function playGame(){
     declareGameResult()
     
 }
-
-playGame();
